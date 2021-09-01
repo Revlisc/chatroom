@@ -1,7 +1,9 @@
 import { AddTypenameToAbstract } from 'graphql-tools';
-import React from 'react';
+import { Component } from 'react';
+import React from 'react-native';
 import { FlatList, Text, View, TouchableOpacity } from 'react-native';
-import { ListItem } from 'react-native-elements';
+
+import Post from './Post';
 
 class Wall extends Component {
     constructor(props) {
@@ -11,18 +13,17 @@ class Wall extends Component {
         }
     }
 
-    
+
 
     render() {
-        const wallItems = ({items}) => {
-            return (
-                <ListItem
-                    title='Post'
-                    subtitle="Loren Ipsum"
-
-                />
-            )
-        }
+        const wallItems = this.state.posts.map(item => {
+            return <Post
+                key={item.id}
+                id={item.id}
+                value={item.content}
+            />
+            
+        })
         return (
             <View >
                 <h1 style={{justifyContent: 'center', alignItems: 'center'}}> Wall</h1>
@@ -30,7 +31,7 @@ class Wall extends Component {
                     this.state.posts.map((item, index) => {
                         return (
                             <TouchableOpacity key={index} onPress={() => AddPost(index)} >
-                                <Post text={item} />
+                                <Text>{wallItems}</Text>
                             </TouchableOpacity>
                         )
                     })
