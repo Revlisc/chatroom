@@ -6,10 +6,7 @@ class LoginScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            userInfo: [{
-                username: 'John',
-                password: "John"
-            }]
+            userInfo: {}
         }
     }
 
@@ -28,7 +25,7 @@ class LoginScreen extends Component {
                         </View>
                         :
                         <View >
-                            Blank
+                            <Text>Blank</Text>
                         </View>
                 }
                
