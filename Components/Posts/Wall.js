@@ -16,6 +16,11 @@ class Wall extends Component {
                     content: 'test',
                     name: 'John Doe'
                 },
+                {
+                    key: 2,
+                    content: 'I am the second',
+                    name: "Jane Doe"
+                }
                 
             ]
         }
@@ -36,21 +41,15 @@ class Wall extends Component {
             
         })
         style={{justifyContent: 'center', alignItems: 'center'}}
+
+        name={this.state.posts.name} content={this.state.posts.content}
     */
 
     render() {
         
         return (
             <View>
-                {
-                    this.state.posts.map(item => {
-                        return (
-                            <Post data={item} key={item.id}/>
-                        )
-                    })
-                }
-                
-                
+                <Post posts={this.state.posts}  /> 
             </View>
                 
             

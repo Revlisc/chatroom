@@ -1,21 +1,11 @@
 import React, { Component } from 'react';
 import { FlatList } from 'react-native';
-import { StyleSheet, Text, View, TextInput } from 'react-native';
-import { Card, ListItem, List } from 'react-native-elements';
-import { SafeAreaInsetsContext } from 'react-native-safe-area-context';
+import { StyleSheet, Text, View, TextInput, SafeAreaView } from 'react-native';
+import { Card, ListItem, List, Icon } from 'react-native-elements';
 
 
-function renderItem ({posts}) {
-    return (
-        <ListItem>   
-            <Card
-                featuredTitle={posts.name}
-            >
-                <Text>{posts.content}</Text>
-            </Card>
-        </ListItem> 
-    )
-}
+
+
 
 class Post extends Component {
 
@@ -25,24 +15,30 @@ class Post extends Component {
             
         }
     }
-
+    renderItem ({item}) {
+        return (
+            <ListItem bottomDivider title={item.name} subtitle={item.content} >     
+                
+                <Icon name='chevron-right' />
+            </ListItem> 
+        )
+    }
    
-    /*
-    <FlatList
-                    data={this.props.posts}
-                    renderItem={renderItem}
-                    keyExtractor={item => item.id}
-                />
-    */
+    
     //working on getting an updatable form to work, base on todo list
     render() {
 
         return (
-                    <FlatList
-                        data={this.props.posts}
-                        renderItem={renderItem}
-                        keyExtractor={item => item.id}
-                    /> 
+                <SafeAreaView > 
+                    <Card >
+                        <Text>Posts</Text>
+                        <FlatList
+                            data={this.props.posts}
+                            renderItem={this.renderItem}
+                            
+                        /> 
+                    </Card>
+                </SafeAreaView>  
         )
     }
     
